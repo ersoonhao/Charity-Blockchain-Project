@@ -1,0 +1,31 @@
+[
+  {
+    "id": 0,
+    "name": "LovePanda",
+    "picture": "images/panda.jpg",
+    "location": "Chengdu, China",
+    "description": "There are 50 wild pandas in Chengdu needing money for their protection."
+  },
+  {
+    "id": 1,
+    "name": "HeartBeat",
+    "picture": "images/heart.jpg",
+    "location": "Ohio, USA",
+    "description": "Save 27 children with heart problems at Ohio Hospital."
+  },
+  {
+    "id": 2,
+    "name": "Save Stray Pets",
+    "picture": "https://www.golden-retriever-dog.com/wp-content/uploads/2015/08/golden-retriever-dog-03.jpg",
+    "location": "Baltimore, USA",
+    "description": "Save hundreds of stray pets in Baltimore and find them a home."
+  },
+  {
+      "id": 3,
+      "name": "VAD",
+      "picture": "images/vad.jpg",
+      "location": "Africa, Southeast Asia",
+      "description": "Vitamin A deficiency (VAD) is the leading cause of preventable blindness in children and increases the risk of disease and death from severe infections."
+    }
+
+]
