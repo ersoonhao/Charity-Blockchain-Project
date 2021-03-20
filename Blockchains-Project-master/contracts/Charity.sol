@@ -4,10 +4,7 @@ contract Charity {
 
     address public creator;
     mapping (address => uint) public donations;
-    bytes32[] public votingOptions;
-    address[] public votingOptionAddresses;
-    uint[] public votingOptionVotes;
-    uint public votingOptionsCount;
+
     uint public startTime;
     uint public endTime;
 
