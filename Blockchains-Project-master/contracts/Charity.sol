@@ -21,42 +21,6 @@ contract Charity {
         endTime = 2**256 - 1;
     }
 
-    // The creator can add voting options before voting starts
-    // @param option: the name of the charity being added
-    // @param address: the address of the charity's wallet
-    function addVoteOption(bytes32 option, address optionAddress) public {
-        if (msg.sender == creator && startTime == (2**256 - 1)) {
-            // TODO: Make this less susceptible to gas attacks; we need a max # of charities
-            if (votingOptions.length <= votingOptionsCount) {
-                votingOptions.push("");
-                votingOptionAddresses.push(0);
-                votingOptionVotes.push(0);
-            }
-            votingOptions[votingOptionsCount] = option;
-            votingOptionAddresses[votingOptionsCount] = optionAddress;
-            votingOptionVotes[votingOptionsCount] = 0;
-            votingOptionsCount++;
-            emit optionAdded(option, optionAddress);
-        }
-    }
-
-    // Locks in the options and allows donors to start voting
-    // @param duration: time that voting will be allowed, in seconds
-    function startVoting(uint duration) public {
-        if (msg.sender == creator && startTime == 2**256 - 1 && now < endTime) {
-            startTime = now;
-            endTime = now + duration;
-        }
-    }
-
-    // If one donates money but hasn't voted, he/she can reclaim money back.
-    function returnDonation() public {
-        if (donations[msg.sender] > 0) {
-            donations[msg.sender] = 0;
-            msg.sender.transfer(donations[msg.sender]);
-        }
-    }
-
     // Allows one to vote for one of the choices, which will be weighted; remove voter's balance
     // @param option: the index of the option to vote for
     function vote(uint option) public {
