@@ -21,19 +21,6 @@ contract Charity {
         endTime = 2**256 - 1;
     }
 
-    // Allows one to vote for one of the choices, which will be weighted; remove voter's balance
-    // @param option: the index of the option to vote for
-    function vote(uint option) public {
-        if (isVotingActive() && option < votingOptionsCount) {
-            uint temp = donations[msg.sender];
-            donations[msg.sender] = 0;
-            votingOptionVotes[option] += temp;
-        }
-    }
-
-    function isVotingActive() public returns (bool) {
-        return (now >= startTime && now <= endTime);
-    }
 
     // Called after the current voting period ends to donate to the majority vote cause
     function disperse() public returns (bool){
@@ -80,15 +67,7 @@ contract Charity {
         return address(this).balance;
     }
 
-    // Get which charity is at a certain index
-    // @param index: the index of the voting option
-    function getVotingOption (uint index) public constant returns (bytes32, address, uint) {
-        if (index < votingOptionsCount) {
-            return (votingOptions[index], votingOptionAddresses[index], votingOptionVotes[index]);
-        } else {
-            return ("null", 0, 0);
-        }
-    }
+
 
     function getAccountBalance(address addr) public view returns(uint) {
 		  return addr.balance;
